@@ -4,7 +4,7 @@
 
 多 repo 軟體系統的 **system repo 範本**：用「映像版本檔」管理整個系統的版本，用 [`just`](https://github.com/casey/just) 當統一入口。部署目標只需要 `just`、`docker`、`git`。
 
-> 狀態：最小可運作範例。bot 自動升級與完整系統驗證 CI 尚未實作，見 [Issues](https://github.com/ycpss91255-docker/system_repo_template/issues)。
+> 狀態：最小可運作範例。bot 自動升級與完整系統驗證 CI 尚未實作，見 [Issues](https://github.com/ycpss91255-lab/system_repo_template/issues)。
 
 ## 核心想法
 
@@ -79,7 +79,7 @@ just deploy 1.1.0 target-01      # 回滾：just deploy 1.0.0 target-01
 | 部署目標的依賴 | 只有 `just`、`docker`、`git`，不裝其他工具 |
 | 跨模組開發 | 釘住多個映像，只改自己負責的模組 |
 | system repo 的 PR | 一律跑完整系統驗證：模組對接 → system → simulator |
-| 自動升級 | sub-repo 發布新映像後，由 bot 開升級 PR（[#1](https://github.com/ycpss91255-docker/system_repo_template/issues/1)、[#2](https://github.com/ycpss91255-docker/system_repo_template/issues/2)） |
+| 自動升級 | sub-repo 發布新映像後，由 bot 開升級 PR（[#1](https://github.com/ycpss91255-lab/system_repo_template/issues/1)、[#2](https://github.com/ycpss91255-lab/system_repo_template/issues/2)） |
 | 多 repo 工作區工具 | 不使用（west、repo 等），原因見 Q&A |
 
 ## 文件

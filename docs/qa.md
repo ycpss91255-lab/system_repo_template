@@ -22,7 +22,7 @@ A（已確定）：release 一律釘 `x.y.z` tag，這是團隊規範，發布�
 A（已確定）：不可以。`just release` 不會覆蓋既有版本檔；要修正就發新版本。
 
 **Q：為什麼不用映像 digest 來鎖定？**
-A（已確定）：團隊規範 tag 不可變，所以直接用 tag 即可。能由 registry 強制「tag 不可覆寫」就優先由 registry 管理，規範作為補充（見 [#5](https://github.com/ycpss91255-docker/system_repo_template/issues/5)）。若 registry 無法做到，再重新評估是否改記 digest。
+A（已確定）：團隊規範 tag 不可變，所以直接用 tag 即可。能由 registry 強制「tag 不可覆寫」就優先由 registry 管理，規範作為補充（見 [#5](https://github.com/ycpss91255-lab/system_repo_template/issues/5)）。若 registry 無法做到，再重新評估是否改記 digest。
 
 **Q：system repo 的 release 下載時，會連同其他 repo 一起帶下來嗎？**
 A（已確定）：不會。git tag 或 release 的原始碼壓縮檔只含 system repo 自己的檔案；各模組由 registry 以映像提供。討論初期曾評估過「離線部署包」（把各 repo 打包成 tarball），改為映像部署後就不需要了。
@@ -50,10 +50,10 @@ A：設定放 `configs/<目標>/`（非機密），已實作。機密不進 git�
 A（已確定並實測）：釘住多個映像，只針對自己負責的模組開發。在本機建置自己的映像，用 `override.env` 只替換那一項。
 
 **Q：system repo 的 PR 要驗證什麼？**
-A（已確定）：一律跑完整系統驗證：模組對接 → system → simulator。細節見 [Issue #3](https://github.com/ycpss91255-docker/system_repo_template/issues/3)。
+A（已確定）：一律跑完整系統驗證：模組對接 → system → simulator。細節見 [Issue #3](https://github.com/ycpss91255-lab/system_repo_template/issues/3)。
 
 **Q：sub-repo 更新後，怎麼反映到 system repo？**
-A（已確定）：由 bot 開「升級版本」PR（修改 `dev.env`），PR 觸發完整系統驗證，通過後人工合併。討論中也提過由 bot 開 issue 通知，結論是以 PR 為主。實作與策略見 [Issue #1](https://github.com/ycpss91255-docker/system_repo_template/issues/1)、[Issue #2](https://github.com/ycpss91255-docker/system_repo_template/issues/2)，**尚未實作**。
+A（已確定）：由 bot 開「升級版本」PR（修改 `dev.env`），PR 觸發完整系統驗證，通過後人工合併。討論中也提過由 bot 開 issue 通知，結論是以 PR 為主。實作與策略見 [Issue #1](https://github.com/ycpss91255-lab/system_repo_template/issues/1)、[Issue #2](https://github.com/ycpss91255-lab/system_repo_template/issues/2)，**尚未實作**。
 
 ## 工具評估
 
@@ -86,15 +86,15 @@ A（已確定）：統一的使用者介面。底下目前是 `docker compose` �
 
 | 項目 | issue |
 |---|---|
-| bot 自動升級 PR；觸發策略（合併、通知、去重） | [#1](https://github.com/ycpss91255-docker/system_repo_template/issues/1)、[#2](https://github.com/ycpss91255-docker/system_repo_template/issues/2) |
-| system repo 的完整系統驗證 CI | [#3](https://github.com/ycpss91255-docker/system_repo_template/issues/3) |
-| 機密管理 | [#4](https://github.com/ycpss91255-docker/system_repo_template/issues/4) |
-| registry 認證與權限；tag 不可覆寫由 registry 強制 | [#5](https://github.com/ycpss91255-docker/system_repo_template/issues/5) |
-| 更多部署失敗情境（斷網、中途中斷、啟動失敗）與舊映像清理 | [#6](https://github.com/ycpss91255-docker/system_repo_template/issues/6) |
-| 實際部署目標環境（docker compose 外掛、just 版本、CPU 架構） | [#7](https://github.com/ycpss91255-docker/system_repo_template/issues/7) |
-| 測試階段使用 SHA tag 映像的流程 | [#8](https://github.com/ycpss91255-docker/system_repo_template/issues/8) |
-| release 發佈自動化與保護 | [#9](https://github.com/ycpss91255-docker/system_repo_template/issues/9) |
-| 部署狀態清查 | [#10](https://github.com/ycpss91255-docker/system_repo_template/issues/10) |
-| 新增／移除模組的流程 | [#11](https://github.com/ycpss91255-docker/system_repo_template/issues/11) |
+| bot 自動升級 PR；觸發策略（合併、通知、去重） | [#1](https://github.com/ycpss91255-lab/system_repo_template/issues/1)、[#2](https://github.com/ycpss91255-lab/system_repo_template/issues/2) |
+| system repo 的完整系統驗證 CI | [#3](https://github.com/ycpss91255-lab/system_repo_template/issues/3) |
+| 機密管理 | [#4](https://github.com/ycpss91255-lab/system_repo_template/issues/4) |
+| registry 認證與權限；tag 不可覆寫由 registry 強制 | [#5](https://github.com/ycpss91255-lab/system_repo_template/issues/5) |
+| 更多部署失敗情境（斷網、中途中斷、啟動失敗）與舊映像清理 | [#6](https://github.com/ycpss91255-lab/system_repo_template/issues/6) |
+| 實際部署目標環境（docker compose 外掛、just 版本、CPU 架構） | [#7](https://github.com/ycpss91255-lab/system_repo_template/issues/7) |
+| 測試階段使用 SHA tag 映像的流程 | [#8](https://github.com/ycpss91255-lab/system_repo_template/issues/8) |
+| release 發佈自動化與保護 | [#9](https://github.com/ycpss91255-lab/system_repo_template/issues/9) |
+| 部署狀態清查 | [#10](https://github.com/ycpss91255-lab/system_repo_template/issues/10) |
+| 新增／移除模組的流程 | [#11](https://github.com/ycpss91255-lab/system_repo_template/issues/11) |
 
 另外，示範只在 Linux + docker compose v5 + just 1.x 上跑過。
